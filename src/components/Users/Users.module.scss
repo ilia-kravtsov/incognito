@@ -1,0 +1,55 @@
+@import '../../style/sass/variables';
+
+$usersContainerHeight: calc(100% - 190px);
+
+.usersContainer {
+  width: 100%;
+  height: $usersContainerHeight;
+  border-radius: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .userChat {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    height: 100px;
+    color: white;
+    cursor: pointer;
+    box-shadow: $box_shadow_2;
+    margin: 10px 0;
+    width: 96%;
+    border-radius: 5px;
+
+    img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .userChatInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-left: 20px;
+
+      span {
+        font-size: 22px;
+        font-weight: 500;
+        color: $fontColor_2;
+      }
+
+      p {
+        font-size: 18px;
+        color: $fontColor_1;
+        padding: 0 10px 0 0;
+        word-wrap: break-word;
+      }
+    }
+  }
+}

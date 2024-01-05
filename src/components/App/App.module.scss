@@ -1,0 +1,46 @@
+@import '../../style/sass/variables';
+
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $accentColor;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.appContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body, * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}
+
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content
+  }
+}

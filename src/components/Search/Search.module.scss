@@ -1,0 +1,46 @@
+@import '../../style/sass/variables';
+
+.searchContainer {
+  min-height: 90px;
+  padding: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .searchForm {
+    padding: 15px;
+    align-self: flex-start;
+    width: 100%;
+    input {
+      background-color: transparent;
+      border: none;
+      color: $fontColor_1;
+      outline: none;
+
+      &::placeholder {
+        color: lightgrey;
+      }
+    }
+  }
+
+  .userChat {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    color: $fontColor_1;
+    cursor: pointer;
+    width: 96%;
+    &:hover {
+      box-shadow: $box_shadow_1;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .userChatInfo {
+
+    }
+  }
+}

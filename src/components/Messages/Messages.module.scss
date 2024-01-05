@@ -1,0 +1,22 @@
+@import '../../style/sass/variables';
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: $accentColor;
+  padding: 15px;
+  height: 100%;
+  overflow-y: scroll;
+
+  .dailyChatDate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    box-shadow: $box_shadow_2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}

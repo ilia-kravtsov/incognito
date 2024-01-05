@@ -1,0 +1,71 @@
+@import '../../style/sass/variables';
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 60px;
+  border-radius: 10px;
+  box-shadow: $box_shadow_1;
+
+  .registerFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 250px;
+    gap: 10px;
+
+    .title {
+      color: $fontColor_1;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .registerForm {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        width: 250px;
+      }
+
+      button {
+        background-color: $accentColor_3;
+        color: $fontColor_4;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: $box_shadow_1;
+      }
+
+      .labelContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .addAvatarIcon {
+          width: 32px;
+          cursor: pointer;
+        }
+
+        .addAvatarIconLabel {
+          margin-left: 15px;
+          cursor: pointer;
+        }
+      }
+
+    }
+
+    p {
+      color: $fontColor_1;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+}
+
