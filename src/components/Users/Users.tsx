@@ -58,7 +58,7 @@ export const Users = ({}: Props) => {
         ?.sort((a, b) => {
           const [userIdA, userDataA] = a;
           const [userIdB, userDataB] = b;
-
+          console.log(userIdA, userIdB);
           const isUserData = (data: any): data is UserData => {
             return typeof data === "object";
           };
