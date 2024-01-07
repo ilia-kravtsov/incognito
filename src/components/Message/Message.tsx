@@ -112,6 +112,18 @@ export const Message = (props: Props) => {
       .catch((error) => {
         console.error("Error updating object:", error);
       });
+
+    const text = messages[messageIndex].text
+
+    await updateDoc(doc(db, "userChats", currentUserId), {
+      [`${data.data.chatId}.lastMessage`]: { text },
+      [`${data.data.chatId}.date`]: Date.now(),
+    });
+
+    await updateDoc(doc(db, "userChats", dataId), {
+      [`${data.data.chatId}.lastMessage.text`]: text ,
+      [`${data.data.chatId}.date`]: Date.now(),
+    });
   };
 
   const onKeySaver = (event: KeyboardEvent<HTMLTextAreaElement>) => {
