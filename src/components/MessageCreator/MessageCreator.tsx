@@ -10,11 +10,9 @@ import { db, storage } from "../../firebase/firebase.ts";
 import { v4 as uuidv4 } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
-type Props = {};
-
-export const MessageCreator = ({}: Props) => {
-  let [text, setText] = useState<string>("");
-  let [image, setImage] = useState<File | null>(null);
+export const MessageCreator = () => {
+  const [text, setText] = useState<string>("");
+  const [image, setImage] = useState<File | null>(null);
 
   const currentUser = useContext(AuthContext);
   const data = useContext(UserContext);
@@ -46,7 +44,6 @@ export const MessageCreator = ({}: Props) => {
         },
         (error: any) => {
           console.error(error);
-          // setError(true);
         },
         () => {},
       );

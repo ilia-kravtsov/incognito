@@ -5,7 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext.tsx";
 import { UserContextProvider } from "./context/UserContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename={'/incognito/'}>
+  <BrowserRouter basename={'/incognito'}>
     <AuthContextProvider>
       <UserContextProvider>
         <App />

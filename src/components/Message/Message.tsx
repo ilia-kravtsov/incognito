@@ -17,8 +17,8 @@ type Props = {
 
 export const Message = (props: Props) => {
   const { message, chatsId, messageIndex } = props;
-  let [changeMessage, setChangeMessage] = useState<string>(message.text);
-  let [editMode, setEditMode] = useState<boolean>(false);
+  const [changeMessage, setChangeMessage] = useState<string>(message.text);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   const currentUser = useContext(AuthContext);
   const data = useContext(UserContext);
@@ -33,7 +33,9 @@ export const Message = (props: Props) => {
 
   const currentUserId = currentUser ? currentUser.uid : "";
   const dataId = data ? data.data.user.uid : "";
-
+  console.log('currentUserId: ',currentUserId);
+  console.log('dataId: ',dataId);
+  console.log('data.data.chatId: ',data.data.chatId);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -43,6 +45,7 @@ export const Message = (props: Props) => {
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
+
   const handleClose = async (event: MouseEvent<HTMLLIElement>) => {
     const userChatsRef = doc(db, "userChats", dataId);
     const chatsRef = doc(db, "chats", chatsId);
@@ -53,19 +56,25 @@ export const Message = (props: Props) => {
       const getUsersChat = await getDoc(userChatsRef);
       const userChatsData = getUsersChat.data();
       console.log("userChatsData: ", userChatsData);
+
+      const getChatsData = await getDoc(chatsRef);
+      const chatsData = getChatsData.data();
+
       await updateDoc(chatsRef, {
         ["messages"]: arrayRemove(message),
       });
 
-      // await updateDoc(userChatsRef, {
-      //   [`${chatsId}`]: {
-      //     ["date"]: userChatsData[chatsId].date,
-      //     ["userInfo"]: userChatsData[chatsId].userInfo,
-      //     ["lastMessage"]: {
-      //       text: "updated_4",
-      //     },
-      //   },
-      // });
+      const text = chatsData?.messages[chatsData?.messages.length-2].text
+      await updateDoc(doc(db, "userChats", currentUserId), {
+        [`${data.data.chatId}.lastMessage`]: { text },
+        [`${data.data.chatId}.date`]: Date.now(),
+      });
+
+      await updateDoc(doc(db, "userChats", dataId), {
+        [`${data.data.chatId}.lastMessage.text`]: text ,
+        [`${data.data.chatId}.date`]: Date.now(),
+      });
+
     } else if (event.currentTarget?.innerText === "ChangeText") {
       console.log("ChangeText");
       setEditMode(true);

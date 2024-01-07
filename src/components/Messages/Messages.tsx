@@ -6,8 +6,6 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/firebase.ts";
 import React from "react";
 
-type Props = {};
-
 export type Messages = {
   id: string;
   text: string;
@@ -16,8 +14,8 @@ export type Messages = {
   img: string;
 };
 
-export const Messages = ({}: Props) => {
-  let [messages, setMessages] = useState<Array<Messages>>();
+export const Messages = () => {
+  const [messages, setMessages] = useState<Array<Messages>>();
   const data = useContext(UserContext);
 
   useEffect(() => {
@@ -58,12 +56,3 @@ export const Messages = ({}: Props) => {
   );
 };
 
-// return (
-//     <div className={s.messagesContainer}>
-//       <p className={s.dailyChatDate}>{getChatData(getData ? getData[0] : "")}</p>
-//
-//       {messages?.map((message) => {
-//         return <Message message={message} key={message.id} />;
-//       })}
-//     </div>
-// );

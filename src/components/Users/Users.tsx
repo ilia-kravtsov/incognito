@@ -5,8 +5,6 @@ import { db } from "../../firebase/firebase.ts";
 import { AuthContext } from "../../context/AuthContext.tsx";
 import { UserContext } from "../../context/UserContext.tsx";
 
-type Props = {};
-
 type UserData = {
   date: number;
   lastMessage: {
@@ -21,9 +19,9 @@ type UserData = {
 
 type User = [string, UserData];
 
-export const Users = ({}: Props) => {
-  let [users, setUsers] = useState<User[]>([]);
-  console.log("users: ", users);
+export const Users = () => {
+  const [users, setUsers] = useState<User[]>([]);
+
   const currentUser = useContext(AuthContext);
   const contextValue = useContext(UserContext);
 

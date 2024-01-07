@@ -9,16 +9,6 @@ import { AuthContext } from "../../context/AuthContext.tsx";
 function App() {
   const currentUser = useContext(AuthContext);
 
-  // const navigate = useNavigate();
-  //
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     navigate("/");
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // }, [currentUser]);
-
   return (
     <div className={s.appContainer}>
       <Routes>
